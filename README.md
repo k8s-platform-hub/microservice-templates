@@ -4,13 +4,6 @@
 
 To help you quickly bootstrap your microservice in a Hasura project, this repository maintains a collection of starter kits for popular options.
 
-Some examples:
-- Hello-world for [python-flask](https://github.com/hasura/quickstart-docker-git/tree/master/python-flask), [java-spring boot](https://github.com/hasura/quickstart-docker-git/tree/master/java-spring-boot), [nodejs-express](https://github.com/hasura/quickstart-docker-git/tree/master/nodejs-express) [php-apache](https://github.com/hasura/quickstart-docker-git/tree/master/php-apache), [.Net](https://github.com/hasura/quickstart-docker-git/tree/master/csharp-aspnet), etc.
-- Static file service based on [nginx](https://github.com/hasura/quickstart-docker-git/tree/master/nginx)
-- Web service in Swift ([Vapor](https://github.com/hasura/quickstart-docker-git/tree/master/swift-vapor), [Perfect](https://github.com/hasura/quickstart-docker-git/tree/master/swift-perfect))
-- Deploying a [MySQL](https://github.com/hasura/quickstart-docker-git/tree/master/mysql) service
-- [Wordpress](https://github.com/hasura/quickstart-docker-git/tree/master/wordpress)
-
 **What is not included**: This is just a collection of starter kits. The idea is to modify the kits as you need to get to a basic setup that works.
 
 # Getting Started in 5 easy steps
@@ -48,6 +41,8 @@ $ git push hasura master
 $ hasura microservices list
 ```
 
+For more information on how to use microservices on Hasura, head to the [docs](https://docs.hasura.io/0.15/manual/custom-microservices/index.html).
+
 -------------
 
 # Contribution Needed!
@@ -65,4 +60,4 @@ Some important things to keep in mind when contributing:
 
 1. Expose only one port, and one data volume to help keep things simple
 2. Annotate the ``Dockerfile`` with comments where you expect users to modify
-3. Try to document the following major use cases when writing your README: ``docker build``, ``git push`` based automated docker build, ``docker run``
+3. Try to document the following major use cases when writing your README: ``git push``, ``docker build`` and local development/testing of the microservice without deploying to the Hasura cluster.

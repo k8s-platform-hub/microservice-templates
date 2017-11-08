@@ -1,4 +1,0 @@
-image: "swift"
-port: 8181
-volume_mounts: null
-env_variables: []
