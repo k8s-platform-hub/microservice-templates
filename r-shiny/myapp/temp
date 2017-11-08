@@ -1,0 +1,10 @@
+Create a hasura project (dashboard.hasura.io and then activate the free trial project)
+You'll get a projectname of the type: someword45
+Download hasuractl
+hasuractl login
+hasuractl set-context someword45
+hasuractl add-ssh-key
+hasuractl quickstart r-shiny app --create
+Your R files will be inside app/myapp/. You can change the Server.R and ui.R files. You can add any more files that you need.
+git commit and then git push hasura master and your app will go live on app.someword42.hasura-app.io
+
