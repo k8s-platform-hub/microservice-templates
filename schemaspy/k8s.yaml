@@ -1,0 +1,58 @@
+apiVersion: v1
+items:
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: schemaspy
+      hasuraService: custom
+    name: schemaspy
+    namespace: '{{ cluster.metadata.namespaces.user }}'
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: schemaspy
+      spec:
+        containers:
+        - image: hasura/base-git-image:0.7
+          env: 
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: postgres.password
+                  name: hasura-secrets
+          imagePullPolicy: IfNotPresent
+          name: schemaspy
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+        securityContext: {}
+        terminationGracePeriodSeconds: 0
+  status: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: schemaspy
+      hasuraService: custom
+    name: schemaspy
+    namespace: '{{ cluster.metadata.namespaces.user }}'
+  spec:
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: schemaspy
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata: {}
