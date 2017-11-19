@@ -4,7 +4,7 @@ RUN apt-get update
 
 RUN apt-get -y install nginx
 
-RUN wget http://sourceforge.net/projects/schemaspy/files/schemaspy/SchemaSpy%205.0.0/schemaSpy_5.0.0.jar/download -O schemaSpy.jar
+RUN wget https://github.com/schemaspy/schemaspy/releases/download/v6.0.0-rc2/schemaspy-6.0.0-rc2.jar -O schemaSpy.jar
 
 RUN wget https://jdbc.postgresql.org/download/postgresql-42.1.4.jar -O postgresql-jdbc4.jar
 
