@@ -1,6 +1,6 @@
 # microservice-templates
 
-[Hasura](https://hasura.io) is a platform for building and deploying application backends. The platform is a [Kubernetes](https://kubernetes.io) based PaaS (*Platform-as-a-Service to deploy backends*) and a PostgreSQL based BaaS (*Backend-as-a-Service to rapidly build backends*).
+[Hasura](https://hasura.io) is a platform for building and deploying application backends. It is a [Kubernetes](https://kubernetes.io) based PaaS (*Platform-as-a-Service to deploy backends*) and a PostgreSQL based BaaS (*Backend-as-a-Service to rapidly build backends*).
 
 To help you quickly bootstrap your microservice in a Hasura project, this repository maintains a collection of starter kits for popular options.
 
@@ -33,7 +33,7 @@ $ hasura conf generate-route app >> conf/routes.yaml
 
 # Step 5: Commit and push!
 $ git add conf/ci.yaml conf/routes.yaml microservices/app
-$ git commit -m 'Adds the app microservice'
+$ git commit -m "Adds the app microservice"
 $ git push hasura master
 
 # FINISH: You're all done! Run the command below to
