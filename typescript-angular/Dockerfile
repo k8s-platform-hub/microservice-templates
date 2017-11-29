@@ -1,6 +1,6 @@
 FROM node:8-alpine
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
