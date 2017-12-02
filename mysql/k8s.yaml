@@ -1,0 +1,69 @@
+apiVersion: v1
+items:
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: mysql
+      hasuraService: custom
+    name: mysql
+    namespace: '{{ cluster.metadata.namespaces.user }}'
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: mysql
+      spec:
+        containers:
+        - image: mysql:latest
+          env: 
+          # you have to set this password:
+          # $ hasura secrets update mysql.password <some-secret-password>
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: mysql.password
+                name: hasura-secrets
+          #- name: MYSQL_DATABASE # uncomment these lines to create the db on startup
+          #  value: mydatabase
+          imagePullPolicy: IfNotPresent
+          name: mysql
+          ports:
+          - containerPort: 3306
+            protocol: TCP
+          resources: {}
+          volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: mysql-data
+        securityContext: {}
+        terminationGracePeriodSeconds: 0
+        volumes:
+        - hostPath:
+            path: /data/mysql
+            name: mysql-data
+  status: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: mysql
+      hasuraService: custom
+    name: mysql
+    namespace: '{{ cluster.metadata.namespaces.user }}'
+  spec:
+    ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+    selector:
+      app: mysql
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata: {}
