@@ -44,7 +44,7 @@ items:
         volumes:
         - hostPath:
             path: /data/mysql
-            name: mysql-data
+          name: mysql-data
   status: {}
 - apiVersion: v1
   kind: Service
