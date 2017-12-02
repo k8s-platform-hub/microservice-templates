@@ -20,5 +20,5 @@ Note: if you need to modify `conf`, uncomment line 4 in `Dockerfile`
 
 - username: `root`
 - password: value set as `MYSQL_ROOT_PASSWORD`
-- hostname: `mysql.hasura` (check by executing `$ hasura microservice list`)
+- hostname: `mysql.default` (check by executing `$ hasura microservice list`)
 - port: `3306`
