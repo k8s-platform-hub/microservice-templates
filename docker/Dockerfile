@@ -10,6 +10,9 @@ RUN mkdir $APP_HOME
 # Copy files from dev environment to container
 COPY bin/app $APP_HOME
 
+# Give exec permissions
+RUN chmod +x $APP_HOME/app
+
 # Set directory path
 WORKDIR $APP_HOME
 
