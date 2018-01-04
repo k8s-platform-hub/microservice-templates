@@ -1,14 +1,22 @@
-FROM python:3.5.2-alpine
+FROM python:3
 
-WORKDIR /usr/src/app
+# install required debian packages
+# add any package that is required after `python-dev`, end the line with \
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    python-dev \
+&& rm -rf /var/lib/apt/lists/*
 
 # install requirements
-# this way when you build you won't need to install again
-# and since COPY is cached we don't need to wait
-COPY app/src/requirements.txt /tmp/requirements.txt
+COPY src/requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 
-COPY app /usr/src/app
+# set /app as working directory
+WORKDIR /app
 
-# App port number is configured through the gunicorn config file
+# copy current directory to /app
+COPY . /app
+
+# run gunicorn server
+# port is configured through the gunicorn config file
 CMD ["gunicorn", "--config", "./conf/gunicorn_config.py", "src:app"]
