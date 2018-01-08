@@ -21,6 +21,9 @@ items:
         containers:
         - image: hasura/hello-world:latest
           env:
+          # This should be changed to a hasura secrets value before pushing to production
+          # In the future this will be updated to a secretKeyRef SECURE_RANDOM_KEY that
+          # will be present in hasura-secrets by default.
           - name: APP_KEY
             value: base64:d5+MLOuLKOTAVdrL+wqTE9jrJkWgicMMirMLa2DJHkU=
           - name: DB_PASSWORD
