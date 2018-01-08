@@ -1,0 +1,63 @@
+apiVersion: v1
+items:
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: www
+      hasuraService: custom
+    name: www
+    namespace: '{{ cluster.metadata.namespaces.user }}'
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: www
+      spec:
+        containers:
+        - image: hasura/hello-world:latest
+          env:
+          # This should be changed to a hasura secrets value before pushing to production
+          # In the future this will be updated to a secretKeyRef SECURE_RANDOM_KEY that
+          # will be present in hasura-secrets by default.
+          - name: APP_KEY
+            value: base64:d5+MLOuLKOTAVdrL+wqTE9jrJkWgicMMirMLa2DJHkU=
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: postgres.password
+                name: hasura-secrets
+          imagePullPolicy: IfNotPresent
+          name: www
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+        securityContext: {}
+        terminationGracePeriodSeconds: 0
+  status: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: null
+    labels:
+      app: www
+      hasuraService: custom
+    name: www
+    namespace: '{{ cluster.metadata.namespaces.user }}'
+  spec:
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: www
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata: {}
