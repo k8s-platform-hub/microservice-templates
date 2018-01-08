@@ -24,7 +24,7 @@ items:
           - name: PRODUCTION
             value: "true"
           - name: CLUSTER_NAME 
-            value: {{ cluster.name }}
+            value: '{{ cluster.name }}'
           imagePullPolicy: IfNotPresent
           name: app
           ports:
