@@ -5,9 +5,9 @@ items:
   metadata:
     creationTimestamp: null
     labels:
-      app: app
+      app: www
       hasuraService: custom
-    name: app
+    name: www
     namespace: '{{ cluster.metadata.namespaces.user }}'
   spec:
     replicas: 1
@@ -16,17 +16,23 @@ items:
       metadata:
         creationTimestamp: null
         labels:
-          app: app
+          app: www
       spec:
         containers:
         - image: hasura/hello-world:latest
           env:
-          - name: PRODUCTION
-            value: "true"
-          - name: CLUSTER_NAME 
-            value: '{{ cluster.name }}'
+          # This should be changed to a hasura secrets value before pushing to production
+          # In the future this will be updated to a secretKeyRef SECURE_RANDOM_KEY that
+          # will be present in hasura-secrets by default.
+          - name: APP_KEY
+            value: base64:d5+MLOuLKOTAVdrL+wqTE9jrJkWgicMMirMLa2DJHkU=
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: postgres.password
+                name: hasura-secrets
           imagePullPolicy: IfNotPresent
-          name: app
+          name: www
           ports:
           - containerPort: 8080
             protocol: TCP
@@ -39,9 +45,9 @@ items:
   metadata:
     creationTimestamp: null
     labels:
-      app: app
+      app: www
       hasuraService: custom
-    name: app
+    name: www
     namespace: '{{ cluster.metadata.namespaces.user }}'
   spec:
     ports:
@@ -49,7 +55,7 @@ items:
       protocol: TCP
       targetPort: 8080
     selector:
-      app: app
+      app: www
     type: ClusterIP
   status:
     loadBalancer: {}

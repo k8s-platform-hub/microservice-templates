@@ -17,5 +17,8 @@ ADD . .
 # Execute build
 RUN grunt build 
 
-#Default command
+# Make command executable
+RUN chmod +x /app/runserver.sh
+
+# Default command
 CMD ["/app/runserver.sh"]
