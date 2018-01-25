@@ -1,0 +1,4 @@
+package: .
+import:
+- package: github.com/levigross/grequests
+  version: ~0.9.0

@@ -1,0 +1,14 @@
+hash: 120f249627be5b861e6bea533685c6ed21287845e4953101618b653b7c9198d1
+updated: 2018-01-25T13:52:31.754368827+05:30
+imports:
+- name: github.com/google/go-querystring
+  version: 53e6ce116135b80d037921a7fdd5138cf32d7a8a
+  subpackages:
+  - query
+- name: github.com/levigross/grequests
+  version: 3f92c0acb6cd7f2b11aa81f82a33783249fc1bcd
+- name: golang.org/x/net
+  version: f2499483f923065a842d38eb4c7f1927e6fc6e6d
+  subpackages:
+  - publicsuffix
+testImports: []
