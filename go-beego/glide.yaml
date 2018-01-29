@@ -1,0 +1,8 @@
+package: .
+import:
+- package: github.com/astaxie/beego
+  version: ~1.9.2
+  subpackages:
+  - context
+- package: github.com/levigross/grequests
+  version: ~0.9.0

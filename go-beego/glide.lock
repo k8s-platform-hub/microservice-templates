@@ -1,0 +1,25 @@
+hash: bf1e6aa7964ddc565b1ea52a843b47f9e1d9df56a5cacf2267b635dcd2b4c1b5
+updated: 2018-01-29T19:52:36.736736015+05:30
+imports:
+- name: github.com/astaxie/beego
+  version: bf5c5626ab429e66d88602e1ab1ab5fbf4629a01
+  subpackages:
+  - config
+  - context
+  - context/param
+  - grace
+  - logs
+  - session
+  - toolbox
+  - utils
+- name: github.com/google/go-querystring
+  version: 53e6ce116135b80d037921a7fdd5138cf32d7a8a
+  subpackages:
+  - query
+- name: github.com/levigross/grequests
+  version: 3f92c0acb6cd7f2b11aa81f82a33783249fc1bcd
+- name: golang.org/x/net
+  version: f2499483f923065a842d38eb4c7f1927e6fc6e6d
+  subpackages:
+  - publicsuffix
+testImports: []
