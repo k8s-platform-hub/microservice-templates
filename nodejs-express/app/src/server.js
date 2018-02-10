@@ -1,11 +1,8 @@
-var express = require('express');
-var app = express();
+const express = require('express')
 
-//your routes here
-app.get('/', function (req, res) {
-    res.send("Hello World!");
-});
+const app = express()
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
-});
+app.use(require('./routes/web').router)
+app.use(require('./routes/api').router)
+
+app.listen(8080, () => console.log('Example app listening on port 8080!'))
