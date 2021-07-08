@@ -1,8 +1,8 @@
-FROM java:8
+FROM openjdk:9.0.1-11-jre-slim
 
 RUN apt-get update
 
-RUN apt-get -y install nginx
+RUN apt-get -y install nginx wget
 
 RUN wget https://github.com/schemaspy/schemaspy/releases/download/v6.0.0-rc2/schemaspy-6.0.0-rc2.jar -O schemaSpy.jar
 

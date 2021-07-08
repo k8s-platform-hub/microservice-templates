@@ -1,5 +1,5 @@
 # Define the base image
-FROM alpine:3.5
+FROM alpine:3.7
 
 # Set environment variables
 ENV APP_HOME /app

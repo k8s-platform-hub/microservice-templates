@@ -1,4 +1,4 @@
-FROM node:6
+FROM node:8
 
 #Install deps
 RUN npm install -g http-server grunt-cli bower yo generator-karma generator-angular

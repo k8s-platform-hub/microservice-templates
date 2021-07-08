@@ -1,6 +1,6 @@
 FROM node:8
 
-#Alpine APK Manager had build issues so replaced them.
+# Install build essential and python
 RUN apt-get update && apt-get install -y build-essential python
 
 #Install deps

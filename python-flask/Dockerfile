@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.7.0a3
 
 # install required debian packages
 # add any package that is required after `python-dev`, end the line with \
